@@ -1,7 +1,7 @@
 Summary:	Flexible partitioning tool
 Name:		parted
 Version:	3.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
