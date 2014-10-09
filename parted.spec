@@ -1,13 +1,13 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/parted.git
 Summary:	Flexible partitioning tool
 Name:		parted
-Version:	3.1
-Release:	2
+Version:	3.2
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
-# Source0-md5:	5d89d64d94bcfefa9ce8f59f4b81bdcb
+# Source0-md5:	0247b6a7b314f8edeb618159fa95f9cb
 Source1:	%{name}.m4
-Patch0:		%{name}-link.patch
 URL:		http://www.gnu.org/software/parted/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -50,9 +50,7 @@ Files required to compile software that uses libparted.
 
 %prep
 %setup -q
-%patch0 -p1
 
-find . -type d -name .deps
 %build
 %{__gettextize}
 %{__libtoolize}
@@ -72,6 +70,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
+
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 install -D %{SOURCE1} $RPM_BUILD_ROOT%{_aclocaldir}/parted.m4
 
